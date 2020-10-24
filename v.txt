@@ -1,6 +1,1 @@
-{
-   "a":2010230100,
-   "b":[{"g":"https://alohaboost.herokuapp.com/","g":"https://aloha1boost.herokuapp.com/"}],
-   "c":"https://alohaboost.github.com/vmess",
-   "d":10
-}
+{"a":2010230100,"b":[{"g":"https://alohaboost.herokuapp.com/","g":"https://aloha1boost.herokuapp.com/"}],"c":"https://alohaboost.github.com/vmess","d":10}
