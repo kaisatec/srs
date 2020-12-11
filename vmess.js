@@ -16,6 +16,8 @@ const _ = require('lodash');
 
 var vmessListString='';
 var bak='';
+
+var isRun=false;
  
 //var execProcess = require("./exec_process.js");
 
@@ -285,7 +287,8 @@ function getCall(index, isWriteToFile, callbackFunction) {
 						return callbackFunction();
 					}
 					//execProcess.result
-					execProcess("command1.bat", function(err, response){//sh command1.sh
+					execProcess("sh command1.sh", function(err, response){// 
+					//execProcess("command1.bat", function(err, response){//sh command1.sh
 						if(!err){
 							console.log(response);
 							return callbackFunction();
@@ -419,6 +422,8 @@ function startToRun(){
 
 	vmessListString='';
 
+	isRun=true;
+
 	getCall(0, false,function(){
 	 
 		getCall(1,false,function(){
@@ -426,7 +431,14 @@ function startToRun(){
 			
 				getCall(3,true,function(){
 			
-					process.exit(1);
+					//process.exit(1);
+
+					const timeoutObj = setTimeout(() => {
+
+						if(isRun) startToRun();
+
+					  }, 7200);
+
 				});
 			});
 		});
@@ -449,7 +461,17 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(morgan('dev'));
 //---------------------------------------------------------------
  
+app.get('/stop/', async (req, res) => {
+	
+	 
 
+	isRun=false;
+	res.send({
+		status: false,
+		message: 'stop'
+	});
+
+});
 app.get('/github/', async (req, res) => {
 	
 	        //execProcess.result
