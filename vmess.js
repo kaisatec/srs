@@ -426,6 +426,7 @@ function startToRun(){
 			
 				getCall(3,true,function(){
 			
+					process.exit(1);
 				});
 			});
 		});
@@ -434,7 +435,7 @@ function startToRun(){
 startToRun();
 
 //-----------------------------------------
-
+ 
  
 // enable files upload
 app.use(fileUpload({
