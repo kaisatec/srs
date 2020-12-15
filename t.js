@@ -10,7 +10,7 @@ var SQLOptions={
 //---------------------------------------------------
 var dbMysql = mysql.createConnection( SQLOptions);
 dbMysql.connect(function(err) {  
-  if (err) throw err;  
-  console.log("mysql Connected!");  
+ //if (err) throw err;  
+  console.log(err);  
 });
 
