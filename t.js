@@ -4,7 +4,7 @@ var SQLOptions={
     host: "localhost",//",//192.168.0.101
     port:  "3306",
     database:"customer",
-    user:"clientlocal",// "root",
+    user:"root",// "root",
     password:"GrapeTreeTown120103__R"//"GrapetreeTown306__R"// "Grapetreetown306"
   };
 //---------------------------------------------------
