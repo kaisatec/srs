@@ -521,7 +521,7 @@ function formatLinkInfo(){
 	console.log("============");
 	console.log(vmessStringArray[0].length);
 	console.log(vmessStringArray[1].length);
-	console.log(vmessStringArray[2].length);
+	//console.log(vmessStringArray[2].length);
 	console.log("============");
 	//vmessStringArray[1];
 	//vmessStringArray[2];
@@ -637,7 +637,7 @@ async function writeLinkInfo(){
 				console.log("------formatLinkInfo");
 				formatLinkInfo();
 				console.log("------writeLinkInfo");
-				//writeLinkInfo();
+				writeLinkInfo();
 				console.log("------callbackFunction");
 				callbackFunction();
 
@@ -733,29 +733,41 @@ async function startToRun(){
 	//vmessStringArray[2]=[];
 	//vmessStringArray[3]=[];
 	
-	//await getCall(0, false,function(){});
-	//await getCall(1, true,function(){});
-	//await getCall(2, false,function(){});
-	//await getCall(3, true,function(){});
+	await getCall(0, false,function(){});
+	await getCall(1, false,function(){});
+    await getCall(2, false,function(){});
+	await getCall(3, false,function(){});
+
+	//console.log("uuuu1");
+	//process.exit(1);
+	const timeoutObj = setTimeout(() => {
+
+		console.log("uuuu");
+		if(isRun) startToRun();
+
+	}, 7200);
+
+
  
-	getCall(0, false,function(){
-	 	getCall(1,false,function(){
-	 		getCall(2,false,function(){
-	 			getCall(3,true,function(){
+ 
+	//getCall(0, true,function(){
+	 	//getCall(1,false,function(){
+	 		//getCall(2,false,function(){
+	 			//getCall(3,true,function(){
 			
-					console.log("uuuu1");
+					//console.log("uuuu1");
 					//process.exit(1);
-					const timeoutObj = setTimeout(() => {
+					//const timeoutObj = setTimeout(() => {
 
 						//console.log("uuuu");
-						if(isRun) startToRun();
+						//if(isRun) startToRun();
 
-					  }, 7200);
+					 // }, 7200);
 
- 		    	});
-	 		});
-	 	});
-	});
+ 		    	//});
+	 		//});
+	 	//});
+	//});
  
 }
 startToRun();
