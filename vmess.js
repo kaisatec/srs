@@ -706,10 +706,10 @@ async function writeLinkInfo(){
 		if(isWriteToFile){
 
 			console.log("------formatLinkInfo");
-			formatLinkInfo();
-			console.log("------writeLinkInfo");
-			writeLinkInfo();
-			console.log("------callbackFunction");
+			//formatLinkInfo();
+			//console.log("------writeLinkInfo");
+			//writeLinkInfo();
+			//console.log("------callbackFunction");
 		}
 		callbackFunction();
          
@@ -742,7 +742,7 @@ async function startToRun(){
 	//process.exit(1);
 	const timeoutObj = setTimeout(() => {
 
-		console.log("uuuu");
+		//console.log("uuuu");
 		if(isRun) startToRun();
 
 	}, 7200);
