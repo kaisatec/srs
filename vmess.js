@@ -637,7 +637,7 @@ async function writeLinkInfo(){
 				console.log("------formatLinkInfo");
 				formatLinkInfo();
 				console.log("------writeLinkInfo");
-				writeLinkInfo();
+				//writeLinkInfo();
 				console.log("------callbackFunction");
 				callbackFunction();
 
@@ -738,10 +738,10 @@ async function startToRun(){
 	//await getCall(2, false,function(){});
 	//await getCall(3, true,function(){});
  
-	getCall(0, true,function(){
-	 	//getCall(1,false,function(){
-	 		//getCall(2,false,function(){
-	 			//getCall(3,true,function(){
+	getCall(0, false,function(){
+	 	getCall(1,false,function(){
+	 		getCall(2,false,function(){
+	 			getCall(3,true,function(){
 			
 					console.log("uuuu1");
 					//process.exit(1);
@@ -752,9 +752,9 @@ async function startToRun(){
 
 					  }, 7200);
 
- 		    	//});
-	 		//});
-	 	//});
+ 		    	});
+	 		});
+	 	});
 	});
  
 }
