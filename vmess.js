@@ -13,7 +13,33 @@ const morgan = require('morgan');
 const _ = require('lodash');
 
 //------------------------------------------------------
+ 
 
+/*
+function insert(main_string, ins_string, pos) {
+	if(typeof(pos) == "undefined") {
+	 pos = 0;
+   }
+	if(typeof(ins_string) == "undefined") {
+	 ins_string = '';
+   }
+	return main_string.slice(0, pos) + ins_string + main_string.slice(pos);
+	 }
+ 
+
+ 
+var ts="o";
+for (var i=0;i<wordStringMax.length;i++){
+
+	 
+	var l=ts.length;
+	var v=Math.random()*l;
+	var s=wordStringMax[i];
+	ts.insert ( v, s );
+ 
+
+}
+*/
 var vmessListString='';
 var bak='';
 
@@ -21,7 +47,6 @@ var isRun=false;
  
 //var execProcess = require("./exec_process.js");
 
- 
 var execProcess = function(command, cb){
     var child = exec(command, function(err, stdout, stderr){
         if(err != null){
@@ -41,37 +66,226 @@ var options0 = {
 	host :  'github.com',
 	port : 443,
 	path : '/Alvin9999/new-pac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7',
-	method : 'GET'
+	method : 'GET',
+	timeout: 8000
 }
 var options1 = {
 	index :1,
 	host :  'awesomeopensource.com',
 	port : 443,
 	path : '/project/iwxf/free-v2ray?categoryPage=11',///project/iwxf/free-v2ray?categoryPage=11',
-	method : 'GET'
+	method : 'GET',
+	timeout: 8000
 }
 var options2 = {
 	index :2,
 	host :  'github.com',
 	port : 443,
-	path : '/selierlin/Share-SSR-V2ray/blob/master/1-share-ssr-v2ray.md',///project/iwxf/free-v2ray?categoryPage=11',
-	method : 'GET'
+	path : '/iwxf/free-v2ray',///project/iwxf/free-v2ray?categoryPage=11',
+	method : 'GET',
+	timeout: 8000
 }
-
 var options3 = {
 	index :3,
 	host :  'github.com',
 	port : 443,
-	path : '/iwxf/free-v2ray',///project/iwxf/free-v2ray?categoryPage=11',
-	method : 'GET'
+	path : '/selierlin/Share-SSR-V2ray/blob/master/1-share-ssr-v2ray.md',///project/iwxf/free-v2ray?categoryPage=11',
+	method : 'GET',
+	timeout: 8000
 }
+
+ 
   
+var originalAmountArray=[];
+var actualAmountArray=[];
+var vmessStringArray=[];
 //----------------------------------------------------
 optionsArray.push(options0);
 optionsArray.push(options1);
 optionsArray.push(options2);
 optionsArray.push(options3);
 
+var valueArray=[9,5,3,8,0,2,7,4,1,6];
+var wordStringMax="*SvW)$KPaQ8u:X;'z9>?ZbM1dh3jlR6E(nIpBrVt|w0A25<eC7~!y@of%D#gsJ4qTU={L}[iG]xkmYHc&^_FO+`-N,./";
+var globalStep=0;
+var d=0;
+ 
+var aaa="888\r\n9999";
+console.log(aaa);
+console.log(aaa.length);
+console.log(aaa[4]=='\r');
+ 
+function encodeString(s){
+ 
+	var returnString="";
+ 
+ 
+	 
+	var t="";
+	var t1="";
+	var step=0;
+
+	var ttt="";
+	 
+	for(var i=0;i<s.length;i++){
+
+		var c=s[i];
+		if(c=='\r'){
+		    i=i+1;
+			c=s[i];
+			if(c=='\n'){
+
+				returnString=returnString+t+"\r\n";
+				if(step==7){
+				//	console.log(ttt);
+				}
+				if(step==8){
+				//	console.log(ttt);
+				}
+				step=step+1;
+				console.log("~~~"+step);
+				if(step==7){
+					console.log(t1);
+					console.log(t);
+				}
+				if(step==8){
+					console.log(t1);
+				//	console.log(t);
+				}
+				ttt="";
+				t="";
+				t1="";
+			}
+
+		}else if(c=='\n'){
+
+			returnString=returnString+t+"\n";
+			step=step+1;
+			console.log("!!!"+step);
+			if(step==7){
+			//	console.log(t);
+			}
+			if(step==8){
+			//	console.log(t);
+			}
+			t="";
+			
+		}else{
+
+			var n = wordStringMax.indexOf(c);
+			var k=step % 10;
+			var m=valueArray[k] ;
+			var p=n+m +i ;
+			 
+			//if(p>wordStringMax.length-1){ 
+			//	p=p % wordStringMax.length;//+1-1;
+			//}
+
+			 
+			p=p % wordStringMax.length;
+			 
+			//console.log(p);
+			t=t+wordStringMax[p]; 
+			t1=t1+c;
+
+		}
+ 
+
+	}
+    
+	return returnString;// t;
+ 
+}
+
+
+function decodeS(s){
+ 
+	var returnString="";
+ 
+	console.log("=======================");
+	var t="";
+	var t1="";
+	var step=0;
+
+	var ttt="";
+ 
+	for(var i=0;i<s.length;i++){
+
+		var c=s[i];
+
+		if(c=='\r'){
+
+			//console.log("=1");
+
+		    i=i+1;
+			c=s[i];
+			if(c=='\n'){
+
+				returnString=returnString+t+"\r\n";
+				step=step+1;
+				t="";
+				//console.log(ttt);
+				ttt="";
+			
+			}
+
+		}else if(c=='\n'){
+
+			returnString=returnString+t+"\n";
+			step=step+1;
+			t="";
+			//console.log(ttt);
+			ttt="";
+			
+		}else{
+
+			var p = wordStringMax.indexOf(c);
+                    var k = step % 10;
+                    var m = valueArray[k];
+                    var v = 0;
+                    while ((v+p) < (m + i  ))
+                    {
+                        v=v+ wordStringMax.length;
+                    }
+                    var n =p+v - m - i;
+                    if (n == wordStringMax.length) n = 0;
+                    t = t + wordStringMax[n];
+                    
+		 
+			//ttt=ttt + " " + n  + " " + k  + " " + m ;
+ 
+		 
+
+		}
+ 
+
+	}
+    
+	return returnString;// t;
+ 
+}
+ 
+/*
+ 
+var s4="";
+var s3="";
+s3="vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogImh0dHBzOi8vZ2l0LmlvL3Y5OTk5IOe+juWbvSIsDQogICJhZGQiOiAidXNhLXByLnR5MTAyNS5tbCIsDQogICJwb3J0IjogIjQ0MyIsDQogICJpZCI6ICJjZGI5YjlmMy0yMTQzLTQ0ZjAtODJjYy0yZGY1MDIyMjBkMzAiLA0KICAiYWlkIjogIjMiLA0KICAibmV0IjogIndzIiwNCiAgInR5cGUiOiAibm9uZSIsDQogICJob3N0IjogInVzYS1wci50eTEwMjUubWwiLA0KICAicGF0aCI6ICIvMTM2YzJiMmY0NTNiMy8iLA0KICAidGxzIjogInRscyINCn0=\r\nvmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogImh0dHBzOi8vZ2l0LmlvL3Y5OTk5IOe+juWbvSIsDQogICJhZGQiOiAiMTAzLjEyOS4xOTYuMTU2IiwNCiAgInBvcnQiOiAiODA4MCIsDQogICJpZCI6ICJjNjM1MTA5MC02NmVmLTM5NmQtODhkZS0xMWUyMzQ0NzdiMTQiLA0KICAiYWlkIjogIjIiLA0KICAibmV0IjogIndzIiwNCiAgInR5cGUiOiAibm9uZSIsDQogICJob3N0IjogIiIsDQogICJwYXRoIjogIi9jbjJoZyIsDQogICJ0bHMiOiAiIg0KfQ==\r\nvmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogImh0dHBzOi8vZ2l0LmlvL3Y5OTk5IOe+juWbvSIsDQogICJhZGQiOiAiY2RuLWJhaWR1MDAxLnhpYW9ob3V6aS5jbHViIiwNCiAgInBvcnQiOiAiODAiLA0KICAiaWQiOiAiZmFkYmUyZGYtMGFlZC0zMjk5LWJmNWQtYzdmNjlhZDI3ODI0IiwNCiAgImFpZCI6ICIxIiwNCiAgIm5ldCI6ICJ3cyIsDQogICJ0eXBlIjogIm5vbmUiLA0KICAiaG9zdCI6ICIzNjA2MjItd3U3LmJhYnlwYWluYS5jb20iLA0KICAicGF0aCI6ICIvdjJyYXkiLA0KICAidGxzIjogIiINCn0=\r\n";
+
+
+s4=encodeString(s3 );
+  	
+console.log(s4); 
+console.log("+++++++++++++++++++++++++++++++++++++++");
+var s5=decodeS(s4 );
+console.log(s5); 
+//console.log(s3.length); 
+////console.log(s5.length); 
+console.log(s5==s3); 
+
+return;
+  
+*/
+ 
 function decodeHTML(index, htmlString){
 	console.log("! "+index);
 	switch(index){
@@ -82,13 +296,12 @@ function decodeHTML(index, htmlString){
 			var s=htmlString;
 			var exitNumber=false;
 			var errorNumber=false;
-			console.log("1");
+			console.log("0:"+index);
+			var tStringArray=[];
 			do{
 				var x=s.indexOf('vmess://');
 				if (x==-1){
-		
 					exitNumber=true;
-			 
 					break;
 				}
 				var l=s.length; 
@@ -98,20 +311,23 @@ function decodeHTML(index, htmlString){
 				var x1=sub.indexOf('</p');
 				 
 				if(x1==-1){
-					errorNumber=true;
+					//errorNumber=true;
 				 
 					break;
 				}
-				console.log("4");
 				var ts=sub.substring(0,x1) ;
-				console.log("5");
 				tems=tems+ts +'\r\n'; 
+				tStringArray.push(ts +'\r\n');
 				s=sub.substring( x1, l1-x1 );
 		
 			}while (exitNumber==false);
-			console.log(tems); 
+
 			if(errorNumber==false){
-				vmessListString=vmessListString+tems;
+ 
+				vmessListString=vmessListString + tems; 
+				vmessStringArray.push(tStringArray);
+				globalStep=globalStep+1;
+				console.log("---------------"+vmessStringArray[vmessStringArray.length-1].length);
 			 
 			} 
 			break;
@@ -122,7 +338,8 @@ function decodeHTML(index, htmlString){
 			var s=htmlString;
 			var exitNumber=false;
 			var errorNumber=false;
-			console.log("1");
+		 
+			var tStringArray=[];
 			var n=0;
 			do{
 				var x=s.indexOf('vmess://');
@@ -139,15 +356,36 @@ function decodeHTML(index, htmlString){
 					break;
 				}
 				var tems=sub.substring(0,x1) ;
-				console.log(tems);
 				break;
 
 			}while (exitNumber==false);
+			var h='';
+			var ts="";
+			for(var i=0;i<tems.length;i++){
+
+				h=tems[i];
+				if(h=='\n'){
+
+					tems=tems+ts +'\r\n'; 
+					tStringArray.push(ts +'\r\n');
+					ts="";
+
+				}else{
+
+					ts =ts+h; 
+			 
+				}
+
+			}
 		 
 			//console.log(tems); 
 			if(errorNumber==false){
-				vmessListString=vmessListString+tems;
+ 
+				vmessListString=vmessListString+tems; 
+				vmessStringArray.push(tStringArray);
+				console.log("---------------"+vmessStringArray[vmessStringArray.length-1].length);
 			 
+				globalStep=globalStep+1;
 			} 
 		
 			break;
@@ -159,7 +397,52 @@ function decodeHTML(index, htmlString){
 			var s=htmlString;
 			var exitNumber=false;
 			var errorNumber=false;
-			console.log("1");
+		 
+			var tStringArray=[];
+			var n=0;
+			do{
+				var x=s.indexOf('vmess://');
+				if (x==-1){
+					exitNumber=true;
+					break;
+				}
+				var l=s.length; 
+				var sub=s.substring(x,l );
+				//console.log(sub);
+				var x1=sub.indexOf('</code>');
+				if(x1==-1){
+					errorNumber=true;
+					break;
+				}
+				var tems=sub.substring(0,x1) ;
+			 
+				break;
+
+			}while (exitNumber==false);
+		 
+			//console.log(tems); 
+			if(errorNumber==false){
+			 
+				vmessListString=vmessListString+tems; 
+				globalStep=globalStep+1;
+			 
+				vmessStringArray.push(tStringArray);
+				console.log("---------------"+vmessStringArray[vmessStringArray.length-1].length);
+			 
+
+			} 
+		
+			break;
+		}
+		
+		case 3:{
+
+			var tems='';
+			var s=htmlString;
+			var exitNumber=false;
+			var errorNumber=false;
+ 
+			var tStringArray=[];
 			do{
 				var x=s.indexOf('vmess://');
 				if (x==-1){
@@ -179,70 +462,158 @@ function decodeHTML(index, htmlString){
 				 
 					break;
 				}
-				console.log("4");
+ 
 				var ts=sub.substring(0,x1) ;
-				console.log("5");
+	 
 				tems=tems+ts +'\r\n'; 
+				tStringArray.push(ts +'\r\n');
 				s=sub.substring( x1, l1-x1 );
 		
 			}while (exitNumber==false);
-			console.log(tems); 
+
 			if(errorNumber==false){
-				vmessListString=vmessListString+tems;
 			 
+				vmessListString=vmessListString+tems; 
+				globalStep=globalStep+1;
+			 
+				vmessStringArray.push(tStringArray);
+				console.log("---------------"+vmessStringArray[vmessStringArray.length-1].length);
+			 
+
 			} 
 			break;
 		}
 
-		case 3:{
-
-			var tems='';
-			var s=htmlString;
-			var exitNumber=false;
-			var errorNumber=false;
-			console.log("1");
-			var n=0;
-			do{
-				var x=s.indexOf('vmess://');
-				if (x==-1){
-					exitNumber=true;
-					break;
-				}
-				var l=s.length; 
-				var sub=s.substring(x,l );
-				//console.log(sub);
-				var x1=sub.indexOf('</code>');
-				if(x1==-1){
-					errorNumber=true;
-					break;
-				}
-				var tems=sub.substring(0,x1) ;
-				console.log(tems);
-				break;
-
-			}while (exitNumber==false);
-		 
-			//console.log(tems); 
-			if(errorNumber==false){
-				vmessListString=vmessListString+tems;
-			 
-			} 
-		
-			break;
-		}
+ 
 
 
 	}
 
 
  }
+ var fileString0="";
+ var aFileNameArray=[];
+ var bFileNameArray=[];
+ var aStringArray=[];
+ var bStringArray=[];
 
-    
+ //a.txt b.txt
+ var aFileString="";
+ var aAmount=0;
+ var aString="";
+ var bAmount=0;
+ var bFileString="";
+ var bString="";
+  
+ //------------------------------------------------------------------------------------------
+ //vmessStringArray tStringArray
+
+
+function formatLinkInfo(){
+
+ 
+
+	aFileString="a.txt";
+	aString="{v:\"2021020101\",u:\"https://alohaboost.github.com/a\",a:"+aFileNameArray.length.toString()+"}";//10
+	bFileString="b.txt";
+	bString="{v:\"2021020101\",m:{\"https://alohaboost.herokuapp.com/\",\"https://aloha1boost.herokuapp.com/\"},u:\"https://alohaboost.github.com/b\",a:"+bFileNameArray.length.toString()+"}";//5
+	 
+	console.log("============");
+	console.log(vmessStringArray[0].length);
+	console.log(vmessStringArray[1].length);
+	console.log(vmessStringArray[2].length);
+	console.log("============");
+	//vmessStringArray[1];
+	//vmessStringArray[2];
+
+	aFileNameArray.clear;
+	bFileNameArray.clear;
+	aStringArray.clear;
+	bStringArray.clear;
+
+
+	var amountAFileNameArray=0;
+	var amountBFileNameArray=0;
+	//if(vmessStringArray[0].length>19) 
+	// vmessStringArray[0].length;
+
+	for(var j=0;j<amountAFileNameArray;j++){
+
+		aFileNameArray.push("a"+ j.toString()+".txt");
+
+	}
+	//aFileNameArray.push("a1.txt");
+	 
+ 
+
+	for(var j=0;j<amountBFileNameArray;j++){
+
+		bFileNameArray.push("b"+ j.toString()+".txt");
+		
+	}
+ 
+	//bFileNameArray.push("b1.txt");
+
+
+	aStringArray.push(vmessListString);
+	aStringArray.push(vmessListString);
+
+	bStringArray.push(vmessListString);
+	bStringArray.push(vmessListString);
+
+
+
+	 
+
+ 
+ }
+
+async function writeLinkInfo(){
+
 	
-function getCall(index, isWriteToFile, callbackFunction) {
+
+	await fs.writeFile(aFileString, aString, function (err) {console.log("a0");});
+	await fs.writeFile(bFileString, bString, function (err) {console.log("b0");});
+
+	for(var i=0;i<aFileNameArray.length;i++){
+		await fs.writeFile(aFileNameArray[i], encodeString( aStringArray[i]), function (err) {console.log("a"+i.toString());});
+	}
+ 
+	for(var i=0;i<bFileNameArray.length;i++){
+		await fs.writeFile(bFileNameArray[i], encodeString( bStringArray[i]), function (err) {console.log("b"+i.toString());});
+	}
+ 
+
+	//execProcess("sh command1.sh", function(err, response){// 
+	execProcess("command1.bat", function(err, response){//sh command1.sh
+			if(!err){
+				console.log(response);
+				//return callbackFunction();
+			}else {
+				console.log(err);
+				//return callbackFunction();
+			}
+		});
+
+ 
+}
+
+ /*
+	//await fs.writeFile('url.txt', encodeString( vmessListString), function (err) {console.log("uuuu000");}); 
+	//await fs.writeFile(aFileNameArray[0], encodeString( vmessListString), function (err) {console.log("uuuua");});
+	//await fs.writeFile(bFileNameArray[0], encodeString( vmessListString), function (err) {console.log("uuuub");});
+	//await fs.writeFile(aFileNameArray[0], encodeString( aStringArray[0]), function (err) {console.log("a");});
+	//await fs.writeFile(aFileNameArray[1], encodeString( aStringArray[1]), function (err) {console.log("a");});
+	 
+	//await fs.writeFile(bFileNameArray[0], encodeString( bStringArray[0]), function (err) {console.log("a");});
+	//await fs.writeFile(bFileNameArray[1], encodeString( bStringArray[1]), function (err) {console.log("a");});
+
+ */
+ 
+ async function getCall(index, isWriteToFile, callbackFunction) {
 
 	var options=optionsArray[index];
- 
+	console.log("get call "+index);
 	console.log("--- "+options.host);
     //initialize options values, the value of the method can be changed to POST to make https post calls
     //var userAccessToken = 'CAAKoIMGu5SAyfOyVhugi7cZAaZA1kHzjrdLvtPlndoKzMJ8xZBtR3YV2iX39FSnhxK1lvtfYXO5FvcbK4MVGJphxeYDZC7HJ5FCmhOr2Ys8ZBG9qYNRSfFGuzoeRgwZBdliKvoW6YPl41b8i3dfrTpR98gFAm6qag9vYM2yD0aEv47fnWQWF1SoXRs6PFFrFu5XOe';
@@ -263,30 +634,32 @@ function getCall(index, isWriteToFile, callbackFunction) {
 
 			if(isWriteToFile){
 
+				console.log("------formatLinkInfo");
+				formatLinkInfo();
+				console.log("------writeLinkInfo");
+				writeLinkInfo();
+				console.log("------callbackFunction");
+				callbackFunction();
+
+			 
+		 
 				/*
-				fs.writeFile('url.txt', vmessListString, function (err) {
-					console.log(vmessListString);
-					if (err){
-						
-						console.log(err);
-						return callbackFunction();
-					}  
-					console.log('ok');
-				 
-				 
-					return callbackFunction();
-
-				  });
-
-
-				  */
-				fs.writeFile('url.txt', vmessListString, function (err) {
+			 
+				fs.writeFile('url.txt', encodeString( vmessListString), function (err) {
 
 					if (err) {
 						console.log(err);
 						return callbackFunction();
 					}
-					//execProcess.result
+ 
+ 
+					return callbackFunction();
+ 
+
+				});
+			 
+				 
+ 
 					execProcess("sh command1.sh", function(err, response){// 
 					//execProcess("command1.bat", function(err, response){//sh command1.sh
 						if(!err){
@@ -298,15 +671,248 @@ function getCall(index, isWriteToFile, callbackFunction) {
 						}
 					});
 
-				  });
-			 
-				 
-
+					*/
+					 
+				//});
 
 			}else{
-
-				return callbackFunction();
+			 	return callbackFunction();
 			}
+ 
+        });
+	 
+    });
+ 
+
+	 
+	//end the request
+ 
+ 
+	getReq.end();
+
+	getReq.on('timeout', () => {
+		getReq.abort();
+	});
+	 
+    getReq.on('error', function(err){
+
+
+		//decodeHTML(index, str);
+		console.log("Error: ", err);
+
+		var t=[];
+		vmessStringArray.push(t);
+
+		if(isWriteToFile){
+
+			console.log("------formatLinkInfo");
+			formatLinkInfo();
+			console.log("------writeLinkInfo");
+			writeLinkInfo();
+			console.log("------callbackFunction");
+		}
+		callbackFunction();
+         
+	}); 
+
+ 
+}
+//----------------------------------------------------------------------
+var today = new Date();
+var time = today.getFullYear()+'/'+today.getMonth()+'/'+today.getDay()+' '+ today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();		 
+console.log('change on time:'+time.toString());
+ 
+async function startToRun(){
+
+	vmessListString='';
+	isRun=true;
+	globalStep=0;
+	vmessStringArray.clear;
+	//vmessStringArray[0]=[];//.clear;
+	//vmessStringArray[1]=[];
+	//vmessStringArray[2]=[];
+	//vmessStringArray[3]=[];
+	
+	//await getCall(0, false,function(){});
+	//await getCall(1, true,function(){});
+	//await getCall(2, false,function(){});
+	//await getCall(3, true,function(){});
+ 
+	getCall(0, false,function(){
+	 	getCall(1,false,function(){
+	 		getCall(2,false,function(){
+	 			getCall(3,true,function(){
+			
+					console.log("uuuu1");
+					//process.exit(1);
+					const timeoutObj = setTimeout(() => {
+
+						//console.log("uuuu");
+						if(isRun) startToRun();
+
+					  }, 7200);
+
+ 		    	});
+	 		});
+	 	});
+	});
+ 
+}
+startToRun();
+//-----------------------------------------
+// enable files upload
+app.use(fileUpload({
+    createParentPath: true
+}));
+
+//add other middleware
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(morgan('dev'));
+
+//---------------------------------------------------------------
+ 
+app.get('/stop/', async (req, res) => {
+
+	isRun=false;
+	res.send({
+		status: false,
+		message: 'stop'
+	});
+
+});
+app.get('/github/', async (req, res) => {
+	
+	        //execProcess.result
+			execProcess("command1.bat", function(err, response ){//sh command1.sh
+				if(!err){
+					console.log(response );
+				//	return callbackFunction();
+				}else {
+					console.log(err);
+				//	return callbackFunction();
+				}
+	 
+			});
+
+			res.send({
+				status: false,
+				message: 'git'
+			});
+
+		});
+
+app.post('/upload/', async (req, res) => {
+    try {
+        if(!req.files) {
+            res.send({
+                status: false,
+                message: 'No file uploaded'
+            });
+        } else {
+
+            //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
+			let a = req.files.file;
+			console.log(req.files);
+			/*
+			for(var i=0;i<req.files.length-1;i++){
+
+				console.log(req.files[i]);
+
+			}
+			*/
+            //Use the mv() method to place the file in upload directory (i.e. "uploads")
+			a.mv('./' + a.name);
+			console.log("1");
+			console.log(a);
+			console.log("2");
+		 
+			/*
+			setInterval(function() {
+				execProcess.result("command1.bat", function(err, response ){//sh command1.sh
+					if(!err){
+						console.log(response );
+					//	return callbackFunction();
+					}else {
+						console.log(err);
+					//	return callbackFunction();
+					}
+	  
+				});
+			  }, 100);
+
+			  */
+
+			res.send({
+				status: false,
+				message: 'git'
+			});
+
+			/*
+
+			res.send({
+				status: true,
+				message: 'File is uploaded',
+				data: {
+					name: a.name,
+					mimetype: a.mimetype,
+					size: a.size
+				}
+			});
+			*/
+
+             
+        }
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+ 
+//---------------------------------------------------------------app
+// default route
+app.get("/", function (req, res) {
+	return res.send({ e: "f", i: "." });
+  });
+
+app.get("/Grapetreetown306/", function (req, res) {
+
+	let user_id = req.params.id;
+    res.sendFile(path.join(__dirname, '/',  "url.txt"));
+	 
+});
+  
+app.listen(process.env.PORT || 3002, function () {
+	console.log("Node app is running on port 3002");
+  });
+  
+  
+/*
+ 
+//var interval = setInterval(getCall(0), 60*1000);
+ 
+//  clearInterval(interval);
+
+ 
+ 
+  var http=require('http');
+  http.get('https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7', function(res){
+	   var str = '';
+	   console.log('Response is '+res.statusCode);
+
+	   res.on('data', function (chunk) {
+			  str += chunk;
+		});
+
+	   res.on('end', function () {
+			console.log(str);
+	   });
+
+ })
+*/
+
+
+
 			/*
 			if(isWriteToFile){
 
@@ -392,218 +998,3 @@ function getCall(index, isWriteToFile, callbackFunction) {
 			//clipboardy.writeSync(vmessListString);
 			 
 			//clipboardy.readSync();
-        });
-	 
-    });
- 
-
-	 
-	//end the request
- 
- 
-	getReq.end();
-	 
-    getReq.on('error', function(err){
-		console.log("Error: ", err);
-
-         
-	}); 
-
- 
-}
-//----------------------------------------------------------------------
- 
-var today = new Date();
-var time = today.getFullYear()+'/'+today.getMonth()+'/'+today.getDay()+' '+ today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-					 
-console.log('change on time:'+time.toString());
-
-function startToRun(){
-
-	vmessListString='';
-
-	isRun=true;
-
-	getCall(0, false,function(){
-	 
-		getCall(1,false,function(){
-			getCall(2,false,function(){
-			
-				getCall(3,true,function(){
-			
-					//process.exit(1);
-
-					const timeoutObj = setTimeout(() => {
-
-						if(isRun) startToRun();
-
-					  }, 7200);
-
-				});
-			});
-		});
-	});
-}
-startToRun();
-
-//-----------------------------------------
- 
- 
-// enable files upload
-app.use(fileUpload({
-    createParentPath: true
-}));
-
-//add other middleware
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(morgan('dev'));
-//---------------------------------------------------------------
- 
-app.get('/stop/', async (req, res) => {
-	
-	 
-
-	isRun=false;
-	res.send({
-		status: false,
-		message: 'stop'
-	});
-
-});
-app.get('/github/', async (req, res) => {
-	
-	        //execProcess.result
-			execProcess("command1.bat", function(err, response ){//sh command1.sh
-				if(!err){
-					console.log(response );
-				//	return callbackFunction();
-				}else {
-					console.log(err);
-				//	return callbackFunction();
-				}
-
-				 
-
-				 
-			});
-
-			res.send({
-				status: false,
-				message: 'git'
-			});
-
-		});
-app.post('/upload/', async (req, res) => {
-    try {
-        if(!req.files) {
-            res.send({
-                status: false,
-                message: 'No file uploaded'
-            });
-        } else {
-
-			 
-            //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
-			let a = req.files.file;
-			console.log(req.files);
-			/*
-			for(var i=0;i<req.files.length-1;i++){
-
-				console.log(req.files[i]);
-
-			}
-		 
-			*/
-			
-            //Use the mv() method to place the file in upload directory (i.e. "uploads")
-			a.mv('./' + a.name);
-			console.log("1");
-			console.log(a);
-			 
-			console.log("2");
-		 
-			/*
-			setInterval(function() {
-				execProcess.result("command1.bat", function(err, response ){//sh command1.sh
-					if(!err){
-						console.log(response );
-					//	return callbackFunction();
-					}else {
-						console.log(err);
-					//	return callbackFunction();
-					}
-	  
-				});
-			  }, 100);
-
-			  */
-			 
- 
-			res.send({
-				status: false,
-				message: 'git'
-			});
-
-			/*
-
-			res.send({
-				status: true,
-				message: 'File is uploaded',
-				data: {
-					name: a.name,
-					mimetype: a.mimetype,
-					size: a.size
-				}
-			});
-			*/
-
-             
-        }
-    } catch (err) {
-        res.status(500).send(err);
-    }
-});
- 
-//---------------------------------------------------------------app
-// default route
-app.get("/", function (req, res) {
-	return res.send({ e: "f", i: "." });
-  });
-
-app.get("/Grapetreetown306/", function (req, res) {
-
-	let user_id = req.params.id;
-    res.sendFile(path.join(__dirname, '/',  "url.txt"));
-	 
-});
-  
-app.listen(process.env.PORT || 3002, function () {
-	console.log("Node app is running on port 3002");
-  });
-  
-  
-/*
- 
-//var interval = setInterval(getCall(0), 60*1000);
- 
-//  clearInterval(interval);
-
- 
- 
-  var http=require('http');
-  http.get('https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7', function(res){
-	   var str = '';
-	   console.log('Response is '+res.statusCode);
-
-	   res.on('data', function (chunk) {
-			  str += chunk;
-		});
-
-	   res.on('end', function () {
-			console.log(str);
-	   });
-
- })
-*/
