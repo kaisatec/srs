@@ -676,7 +676,7 @@ async function writeLinkInfo(){
 			console.log("------formatLinkInfo");
 			formatLinkInfo();
 			//console.log("------writeLinkInfo");
-			//writeLinkInfo();
+			writeLinkInfo();
 			//console.log("------callbackFunction");
 		}
 		callbackFunction();
