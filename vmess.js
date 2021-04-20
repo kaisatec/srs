@@ -674,7 +674,7 @@ async function writeLinkInfo(){
 		if(isWriteToFile){
 
 			console.log("------formatLinkInfo");
-			//formatLinkInfo();
+			formatLinkInfo();
 			//console.log("------writeLinkInfo");
 			//writeLinkInfo();
 			//console.log("------callbackFunction");
