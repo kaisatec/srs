@@ -641,39 +641,7 @@ async function writeLinkInfo(){
 				console.log("------callbackFunction");
 				callbackFunction();
 
-			 
-		 
-				/*
-			 
-				fs.writeFile('url.txt', encodeString( vmessListString), function (err) {
-
-					if (err) {
-						console.log(err);
-						return callbackFunction();
-					}
  
- 
-					return callbackFunction();
- 
-
-				});
-			 
-				 
- 
-					execProcess("sh command1.sh", function(err, response){// 
-					//execProcess("command1.bat", function(err, response){//sh command1.sh
-						if(!err){
-							console.log(response);
-							return callbackFunction();
-						}else {
-							console.log(err);
-							return callbackFunction();
-						}
-					});
-
-					*/
-					 
-				//});
 
 			}else{
 			 	return callbackFunction();
@@ -723,7 +691,7 @@ var time = today.getFullYear()+'/'+today.getMonth()+'/'+today.getDay()+' '+ toda
 console.log('change on time:'+time.toString());
  
 async function startToRun(){
-
+ 
 	vmessListString='';
 	isRun=true;
 	globalStep=0;
@@ -732,45 +700,38 @@ async function startToRun(){
 	//vmessStringArray[1]=[];
 	//vmessStringArray[2]=[];
 	//vmessStringArray[3]=[];
-	
+ 
+
 	await getCall(0, false,function(){});
 	await getCall(1, false,function(){});
     await getCall(2, false,function(){});
-	await getCall(3, false,function(){});
+	await getCall(3, false,function(){
 
-	//console.log("uuuu1");
-	//process.exit(1);
+
+	});
+
 	const timeoutObj = setTimeout(() => {
 
-		//console.log("uuuu");
-		if(isRun) startToRun();
+		 
+    if(isRun) startToRun();
+  
 
 	}, 7200);
 
+ 
+	 
+	/*
+	 
 
  
- 
-	//getCall(0, true,function(){
-	 	//getCall(1,false,function(){
-	 		//getCall(2,false,function(){
-	 			//getCall(3,true,function(){
-			
-					//console.log("uuuu1");
-					//process.exit(1);
-					//const timeoutObj = setTimeout(() => {
+	*/
 
-						//console.log("uuuu");
-						//if(isRun) startToRun();
-
-					 // }, 7200);
-
- 		    	//});
-	 		//});
-	 	//});
-	//});
  
 }
+ 
 startToRun();
+ 
+ 
 //-----------------------------------------
 // enable files upload
 app.use(fileUpload({
@@ -898,7 +859,9 @@ app.listen(process.env.PORT || 3002, function () {
 	console.log("Node app is running on port 3002");
   });
   
-  
+
+
+//---------------------------------------------------------------------------
 /*
  
 //var interval = setInterval(getCall(0), 60*1000);
@@ -1010,3 +973,84 @@ app.listen(process.env.PORT || 3002, function () {
 			//clipboardy.writeSync(vmessListString);
 			 
 			//clipboardy.readSync();
+
+
+
+
+						 
+		 
+				/*
+			 
+				fs.writeFile('url.txt', encodeString( vmessListString), function (err) {
+
+					if (err) {
+						console.log(err);
+						return callbackFunction();
+					}
+ 
+ 
+					return callbackFunction();
+ 
+
+				});
+			 
+				 
+ 
+					execProcess("sh command1.sh", function(err, response){// 
+					//execProcess("command1.bat", function(err, response){//sh command1.sh
+						if(!err){
+							console.log(response);
+							return callbackFunction();
+						}else {
+							console.log(err);
+							return callbackFunction();
+						}
+					});
+
+					*/
+					 
+				//});
+ 
+ 
+	//getCall(0, true,function(){
+	 	//getCall(1,false,function(){
+	 		//getCall(2,false,function(){
+	 			//getCall(3,true,function(){
+			
+					//console.log("uuuu1");
+					//process.exit(1);
+					//const timeoutObj = setTimeout(() => {
+
+						//console.log("uuuu");
+						//if(isRun) startToRun();
+
+					 // }, 7200);
+
+ 		    	//});
+	 		//});
+	 	//});
+	//});
+
+
+
+	/*
+ 
+var s4="";
+var s3="";
+s3="vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogImh0dHBzOi8vZ2l0LmlvL3Y5OTk5IOe+juWbvSIsDQogICJhZGQiOiAidXNhLXByLnR5MTAyNS5tbCIsDQogICJwb3J0IjogIjQ0MyIsDQogICJpZCI6ICJjZGI5YjlmMy0yMTQzLTQ0ZjAtODJjYy0yZGY1MDIyMjBkMzAiLA0KICAiYWlkIjogIjMiLA0KICAibmV0IjogIndzIiwNCiAgInR5cGUiOiAibm9uZSIsDQogICJob3N0IjogInVzYS1wci50eTEwMjUubWwiLA0KICAicGF0aCI6ICIvMTM2YzJiMmY0NTNiMy8iLA0KICAidGxzIjogInRscyINCn0=\r\nvmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogImh0dHBzOi8vZ2l0LmlvL3Y5OTk5IOe+juWbvSIsDQogICJhZGQiOiAiMTAzLjEyOS4xOTYuMTU2IiwNCiAgInBvcnQiOiAiODA4MCIsDQogICJpZCI6ICJjNjM1MTA5MC02NmVmLTM5NmQtODhkZS0xMWUyMzQ0NzdiMTQiLA0KICAiYWlkIjogIjIiLA0KICAibmV0IjogIndzIiwNCiAgInR5cGUiOiAibm9uZSIsDQogICJob3N0IjogIiIsDQogICJwYXRoIjogIi9jbjJoZyIsDQogICJ0bHMiOiAiIg0KfQ==\r\nvmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogImh0dHBzOi8vZ2l0LmlvL3Y5OTk5IOe+juWbvSIsDQogICJhZGQiOiAiY2RuLWJhaWR1MDAxLnhpYW9ob3V6aS5jbHViIiwNCiAgInBvcnQiOiAiODAiLA0KICAiaWQiOiAiZmFkYmUyZGYtMGFlZC0zMjk5LWJmNWQtYzdmNjlhZDI3ODI0IiwNCiAgImFpZCI6ICIxIiwNCiAgIm5ldCI6ICJ3cyIsDQogICJ0eXBlIjogIm5vbmUiLA0KICAiaG9zdCI6ICIzNjA2MjItd3U3LmJhYnlwYWluYS5jb20iLA0KICAicGF0aCI6ICIvdjJyYXkiLA0KICAidGxzIjogIiINCn0=\r\n";
+
+
+s4=encodeString(s3 );
+  	
+console.log(s4); 
+console.log("+++++++++++++++++++++++++++++++++++++++");
+var s5=decodeS(s4 );
+console.log(s5); 
+//console.log(s3.length); 
+////console.log(s5.length); 
+console.log(s5==s3); 
+
+return;
+  
+*/
+ 
