@@ -638,9 +638,9 @@ async function writeLinkInfo(){
 			if(isWriteToFile){
 
 				console.log("------formatLinkInfo");
-				//formatLinkInfo();
+				formatLinkInfo();
 				console.log("------writeLinkInfo");
-				//writeLinkInfo();
+				writeLinkInfo();
 				console.log("------callbackFunction");
 				callbackFunction();
 
@@ -708,10 +708,10 @@ async function startToRun(){
 	await getCall(0, false,function(){});
 	await getCall(1, false,function(){});
     await getCall(2, false,function(){});
-	await getCall(3, true,function(){
+	//await getCall(3, true,function(){
 
 
-	});
+	//});
 
 	const timeoutObj = setTimeout(() => {
 
