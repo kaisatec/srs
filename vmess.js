@@ -584,9 +584,9 @@ async function writeLinkInfo(){
 	}
  
 
-	/*
-	//execProcess("sh command1.sh", function(err, response){// 
-	execProcess("command1.bat", function(err, response){//sh command1.sh
+	 
+	execProcess("sh command1.sh", function(err, response){// 
+	//execProcess("command1.bat", function(err, response){//sh command1.sh
 			if(!err){
 				console.log(response);
 				//return callbackFunction();
@@ -596,7 +596,7 @@ async function writeLinkInfo(){
 			}
 		});
 
-		*/
+	 
 
  
 }
@@ -638,9 +638,9 @@ async function writeLinkInfo(){
 			if(isWriteToFile){
 
 				console.log("------formatLinkInfo");
-				formatLinkInfo();
+				//formatLinkInfo();
 				console.log("------writeLinkInfo");
-				writeLinkInfo();
+				//writeLinkInfo();
 				console.log("------callbackFunction");
 				callbackFunction();
 
