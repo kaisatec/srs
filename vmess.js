@@ -713,6 +713,10 @@ async function startToRun(){
 
 	//});
 
+	setTimeout(function(){ if(isRun) startToRun(); }, 3000);
+
+
+	/*
 	const timeoutObj = setTimeout(() => {
 
 		 
@@ -722,6 +726,7 @@ async function startToRun(){
 	}, 7200);
 
  
+	*/
 	 
 	/*
 	 
