@@ -678,7 +678,7 @@ async function writeLinkInfo(){
 
 			console.log("------formatLinkInfo");
 			formatLinkInfo();
-			//console.log("------writeLinkInfo");
+			console.log("------writeLinkInfo");
 			writeLinkInfo();
 			//console.log("------callbackFunction");
 		}
@@ -708,15 +708,15 @@ async function startToRun(){
 	await getCall(0, false,function(){});
 	await getCall(1, false,function(){});
     await getCall(2, false,function(){});
-	//await getCall(3, true,function(){
+	await getCall(3, true,function(){
 
 
-	//});
+	});
 
-	setTimeout(function(){ if(isRun) startToRun(); }, 3000);
+	//setTimeout(function(){ if(isRun) startToRun(); }, 3000);
 
 
-	/*
+	 
 	const timeoutObj = setTimeout(() => {
 
 		 
@@ -726,7 +726,7 @@ async function startToRun(){
 	}, 7200);
 
  
-	*/
+ 
 	 
 	/*
 	 
